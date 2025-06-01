@@ -3,7 +3,7 @@ import Knex from "knex";
 const config = {
   client: "mysql2",
   connection: {
-    host: "mariadb",
+    host: "localhost",
     port: 3306,
     user: "root",
     password: "root",
