@@ -1,0 +1,37 @@
+services:
+  backend:
+    build: .
+    container_name: link_up_backend
+    command: node index.js
+    restart: always
+    ports:
+      - "3000:3000"
+    networks: 
+      - link_up_network
+    depends_on:
+      - mariadb
+    volumes:
+      - backend_data:/application
+
+  mariadb:
+    image: mariadb:latest
+    container_name: link_up_db
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: linkupapp
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: linkup
+    networks: 
+      - link_up_network
+    volumes:
+      - database_data:/var/lib/mysql
+
+networks:
+  link_up_network:
+    driver: bridge
+
+volumes:
+  backend_data:
+  database_data:
