@@ -2,7 +2,7 @@ import { USER_ERRORS } from "../../src/constants/error_messages/index.js";
 import jwt from "jsonwebtoken";
 
 const TokenValidationMiddleware = (req, res, next) => {
-    const requestHeader = req.headers['Authorization'];
+    const requestHeader = req.headers['authorization'];
 
     if (!requestHeader) {
         res.status(401).json({ message: USER_ERRORS.UNAUTH_USER });
