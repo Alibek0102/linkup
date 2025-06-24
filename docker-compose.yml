@@ -26,7 +26,7 @@ services:
     networks: 
       - link_up_network
     volumes:
-      - /home/ablaiyli01/linkup_volumes/database:/var/lib/mariaDB
+      - /home/ablaiyli01/linkup_volumes/database:/var/lib/mysql
 
   adminer:
     image: adminer
