@@ -32,7 +32,7 @@ services:
     container_name: adminer_container
     restart: always
     environment:
-      ADMINER_DESIGN: flat
+      ADMINER_DESIGN: pepa-linha
     ports:
       - "8080:8080"
 
