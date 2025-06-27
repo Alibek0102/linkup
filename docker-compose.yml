@@ -20,8 +20,9 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_USER: linkupapp
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: alibek_yst
+      MYSQL_PASSWORD: linkup_2001 
+      MYSQL_ROOT_PASSWORD: linkup_2001
       MYSQL_DATABASE: linkup
     networks: 
       - link_up_network
