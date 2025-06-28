@@ -53,13 +53,13 @@ services:
     image: minio/mc
     depends_on:
       - minio
-    entrypoint: >
-      /bin/sh -c "
-        sleep 5;
-        mc alias set myminio http://minio:9000 linkupminio linkup2025;
-        mc mb myminio/linkup;
-        mc anonymous set download myminio/linkup;
-        tail -f /dev/null
+    entrypoint: ["/bin/sh", "-c", "
+      sleep 5 && 
+      mc alias set myminio http://minio:9000 linkupminio linkup2025 && 
+      mc mb myminio/linkup && 
+      mc anonymous set download myminio/linkup &&
+      tail -f /dev/null
+    "]
 
 networks:
   link_up_network:
