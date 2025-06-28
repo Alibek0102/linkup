@@ -1,7 +1,7 @@
 import { database } from '../../src/config/index.js';
 import { CITY_ERRORS } from '../../src/constants/error_messages/index.js';
 
-const CitiesController = async (req, res) => {
+const CitiesController = async (_, res) => {
     try {
         const cities = await database("cities").select("*");
         res.json(cities);
