@@ -22,8 +22,8 @@ const CitiesController = async (reg, res) => {
             pagination: PaginationBodyGenerator({ count, page, perPage })
         });
     } catch (error) {
-        console.log(error);
-        res.status(404).json({ message: CITY_ERRORS.GET_CITIES_ERROR });
+        res.status(CITY_ERRORS.GET_CITIES_ERROR.error_code)
+            .json({ message: CITY_ERRORS.GET_CITIES_ERROR.message });
     }
 }
 
