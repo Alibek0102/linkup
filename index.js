@@ -12,10 +12,12 @@ dotenv.config();
 
 const app = express();
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
-
+//Swagger
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use(express.json());
 
+// Routes
 app.use('/auth', AuthRouter);
 app.use('/cities', CitiesRouter);
 app.use('/interests', InterestsRouter);
