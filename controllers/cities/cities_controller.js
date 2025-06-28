@@ -1,11 +1,28 @@
 import { database } from '../../src/config/index.js';
 import { CITY_ERRORS } from '../../src/constants/error_messages/index.js';
+import { PaginationBodyGenerator } from '../../utils/index.js';
 
-const CitiesController = async (_, res) => {
+const CitiesController = async (reg, res) => {
     try {
-        const cities = await database("cities").select("*");
-        res.json(cities);
+        const page = parseInt(reg.query.page) || 1;
+        const perPage = parseInt(reg.query.per_page) || 10;
+        const offset = (page - 1) * perPage;
+
+        const [cities, [{ count }]] = await Promise.all([
+            database("cities")
+                .select("*")
+                .limit(perPage)
+                .offset(offset),
+
+            database.count("* as count")
+        ]);
+
+        res.json({
+            data: cities,
+            pagination: PaginationBodyGenerator({ count, page, perPage })
+        });
     } catch (error) {
+        console.log(error);
         res.status(404).json({ message: CITY_ERRORS.GET_CITIES_ERROR });
     }
 }
