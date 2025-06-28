@@ -14,8 +14,11 @@ const CitiesController = async (reg, res) => {
                 .limit(perPage)
                 .offset(offset),
 
-            database.count("* as count")
+            database("cities")
+                .count("* as count")
         ]);
+
+        console.log('count', count);
 
         res.json({
             data: cities,
