@@ -65,7 +65,7 @@ services:
       exit 0;
       "
     networks:
-      - minio_net
+      - link_up_network
 
 networks:
   link_up_network:
