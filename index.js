@@ -4,10 +4,16 @@ import dotenv from 'dotenv';
 import { AuthRouter } from './routes/auth/index.js';
 import { CitiesRouter } from './routes/cities/index.js';
 import { InterestsRouter } from './routes/interests/index.js';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerOptions from './src/config/swagger_configuration.js';
+import swaggerUi from "swagger-ui-express";
 
 dotenv.config();
 
 const app = express();
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
+
+app.use('/linkup-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(express.json());
 
 app.use('/auth', AuthRouter);
