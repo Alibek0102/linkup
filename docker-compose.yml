@@ -32,7 +32,7 @@ services:
     container_name: adminer_container
     restart: always
     environment:
-      ADMINER_DESIGN: nette-alt
+      ADMINER_DESIGN: pepa-linha
     ports:
       - "8080:8080"
 
