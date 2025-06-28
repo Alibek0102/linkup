@@ -18,8 +18,6 @@ const CitiesController = async (reg, res) => {
                 .count("* as count")
         ]);
 
-        console.log('count', count);
-
         res.json({
             data: cities,
             pagination: PaginationBodyGenerator({ count, page, perPage })
