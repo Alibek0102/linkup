@@ -13,7 +13,7 @@ dotenv.config();
 const app = express();
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
-app.use('/linkup-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(express.json());
 
 app.use('/auth', AuthRouter);
