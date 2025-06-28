@@ -35,28 +35,43 @@ const router = Router();
  *              content:
  *                  application/json:
  *                      schema:
- *                          type: array
- *                          items:
- *                              type: object
- *                              properties:
- *                                  id:
- *                                      type: integer
- *                                      example: 1
- *                                  name:
- *                                      type: string
- *                                      example: Алматы
- *                                  latitude:
- *                                      type: number
- *                                      example: 45.0156
- *                                  longitude:
- *                                      type: number
- *                                      example: 78.3739
- *                                  created_at:
- *                                      type: string
- *                                      example: "2025-06-28T16:57:25.000Z"
- *                                  updated_at:
- *                                      type: string
- *                                      example: "2025-06-28T16:57:25.000Z"
+ *                          type: object
+ *                          properties:
+ *                              data:
+ *                                  type: array
+ *                                  items:
+ *                                      type: object
+ *                                      properties:
+ *                                          id:
+ *                                              type: integer
+ *                                              example: 1
+ *                                          name:
+ *                                              type: string
+ *                                              example: Алматы
+ *                                          latitude:
+ *                                              type: number
+ *                                              example: 45.0156
+ *                                          longitude:
+ *                                              type: number
+ *                                              example: 78.3739
+ *                                          created_at:
+ *                                              type: string
+ *                                              example: "2025-06-28T16:57:25.000Z"
+ *                                          updated_at:
+ *                                              type: string
+ *                                              example: "2025-06-28T16:57:25.000Z"
+ *                              pagination:
+ *                                  type: object
+ *                                  properties:
+ *                                      total:
+ *                                          type: integer
+ *                                          example: 1
+ *                                      current_page:
+ *                                          type: integer
+ *                                          example: 1
+ *                                      per_page:
+ *                                          type: integer
+ *                                          example: 10
  */
 router.get('/', TokenValidationMiddleware, CitiesController);
 
