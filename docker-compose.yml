@@ -50,27 +50,6 @@ services:
     command: server /data --console-address ":9001"
     networks:
       - link_up_network
-    
-  mc:
-    image: minio/mc
-    container_name: minio_mc_init
-    depends_on:
-      - minio
-    entrypoint: >
-      /bin/sh -c "
-      sleep 5;
-      mc alias set myminio http://minio:9000 linkupminio linkup2025;
-      mc mb -p myminio/linkup;
-      mc policy set public myminio/linkup;
-      mkdir -p /tmp/interests;
-      echo '<svg>...</svg>' > /tmp/interests/business_icon.svg;
-      mc cp --recursive /tmp/interests myminio/linkup/;
-      exit 0;
-      "
-    networks:
-      - link_up_network
-    volumes:
-      - /tmp:/tmp
 
 networks:
   link_up_network:
